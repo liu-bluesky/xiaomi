@@ -1,0 +1,450 @@
+
+
+
+<template>
+  <div class="nav">
+    <div class="w">
+      <div class="nav-left">
+        <ul>
+          <li><a href="#">小米商城</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">MIUI</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">IoT</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">云服务</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">金融</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">有品</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">小爱开放平台</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">企业团购</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">资质证照</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">协议规则</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">下载app</a></li>
+          <li class="tree">|</li>
+          <li><a href="#">Select Region</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <div class="cart" id="cart">
+          <a href="#" id="cart-a">
+            <span class="sapn">&#xf0179;</span>
+            购物车(0)
+          </a>
+          <div id="cart_content">
+            <div class="cart_contenttop">
+              <img src="https://i1.mifile.cn/a1/pms_1550642185.33171962.jpg?width=60&height=60" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="topbar-info fl show ">
+          <a href="#">登陆</a>
+          <span class="tree">|</span>
+          <a href="#">注册</a>
+          <span class="tree">|</span>
+          <span class="message"><a href="#">消息通知</a></span>
+        </div>
+        <!--登陆前-->
+        <!--hide隐藏show显示-->
+        <div class="topbar-info fr hide">
+                <span class="user" id="user">
+                    <a href="#" class="user-name" id="username">
+                        <span class="name">用户名</span>
+                        <span class="iconfont tu">&#xe60b;</span>
+                    </a>
+                    <ul class="user-menu" id="uu">
+                        <!--<li><a href="#"></a></li>-->
+                        <li><a href="#">个人中心</a></li>
+                        <li><a href="#">评价晒单</a></li>
+                        <li><a href="#">我的喜欢</a></li>
+                        <li><a href="#">小米帐号</a></li>
+                        <li><a href="#">退出登录</a></li>
+                        </ul>
+                </span>
+          <span class="tre">|</span>
+          <span class="message">
+                    <a href="#">消息通知</a>
+                </span>
+          <span class="tre">|</span>
+          <a href="#">我的订单</a>
+        </div>
+        <!--登陆后-->
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import login from '../index/login/login'
+  export default {
+    name: "footers",
+    data(){
+      return {
+        // /userlogin
+        path:'',
+      }
+    },
+    mounted(){
+      // this.current()
+    },
+    created(){
+    },
+    components:{
+      login
+    },
+    methods:{
+      shopget(){
+        var cart=document.getElementById("cart");
+        var carta=document.getElementById("cart-a");
+        var user=document.getElementById("user");
+        var username=document.getElementById("username");
+        var uu=document.getElementById("uu")
+        cart.onmouseenter = function () {
+          carta.style.color = '#ff6700';
+          carta.style.backgroundColor = '#fff';
+        }
+        cart.onmouseleave = function () {
+          carta.style.color = '#b0b0b0';
+          carta.style.backgroundColor = '#424242';
+        }
+        user.onmouseover=function () {
+          username.style.color="#ff6700"
+          username.style.backgroundColor="#fff";
+          uu.style.height="150px"
+          uu.style.boxShadow="0 2px 10px rgba(0,0,0,0.15)";
+        }
+        user.onmouseout=function () {
+          username.style.color="";
+          uu.style.height="0px"
+          uu.style.boxShadow="0 0";
+          username.style.backgroundColor="";
+        }
+      },
+      pathbool(){
+        console.log();
+
+        var getval = JSON.parse(localStorage.getItem('loginbool'))
+        if (getval==false) {
+          this.$store.commit('getonOff',false)
+        }
+      },
+
+
+    },
+  }
+</script>
+
+<style scoped>
+  /*css 初始化 */
+  html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+    margin: 0;
+    padding: 0;
+  }
+
+  fieldset, img, input, button { 			/*fieldset组合表单中的相关元素*/
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline-style: none;                /*inuput边框*/
+  }
+
+  ul, ol {
+    list-style: none;				/*清除列表风格*/
+  }
+
+  input {
+    padding-top: 0;
+    padding-bottom: 0;
+
+  }
+
+  select, input {
+    vertical-align: middle;
+  }
+
+  select, input, textarea {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  /*防止多行文本框拖动*/
+  img {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  /*  去掉图片低测默认的3像素空白缝隙*/
+  table {
+    border-collapse: collapse;			/*合并外边线*/
+  }
+
+
+  body {
+    font: 12px/150% Arial, Verdana, "\5b8b\4f53";	/*宋体，Unicode，统一码*/
+    color: #666;
+    background: #fff
+  }
+
+  .clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+  }
+
+  .clearfix:after {
+    clear: both;
+  }
+
+  .clearfix {
+    *zoom: 1; /*IE/7/6*/
+  }
+
+  a {
+    color: #666;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  a:hover {
+    color: #ff6700;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+  }
+
+  s, i, em {
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .col-red {
+    color:  #ff6700 !important;
+  }
+
+  /*公共类*/
+  .w {
+    /*版心 提取 */
+    width: 1226px;
+    min-width:1226px;
+    margin: 0 auto;
+  }
+
+  .fl {
+    float: left
+  }
+
+  .fr {
+    float: right
+  }
+
+  .al {
+    text-align: left
+  }
+
+  .ac {
+    text-align: center
+  }
+
+  .ar {
+    text-align: right
+  }
+
+  .hide {
+    display: none
+  }
+  .show{
+    display: block;
+  }
+  @font-face {
+
+    font-family: 'zz';
+    src: url('../../fonts/fon/iconfont.eot');
+    src: url('../../fonts/fon/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/fon/iconfont.woff2') format('woff2'),
+    url('../../fonts/fon/iconfont.woff') format('woff'),
+    url('../../fonts/fon/iconfont.ttf') format('truetype'),
+    url('../../fonts/fon/iconfont.svg#iconfont') format('svg');
+  }
+  .nav{
+    background-color: #333333;
+  }
+  .w{
+    height: 40px;
+    background-color: #333333;
+
+  }
+  .nav-left ul li{
+    float: left;
+    line-height: 40px;
+  }
+  .nav-left a, .nav-right a{
+    color:#b0b0b0 ;
+  }
+  .nav-left a:hover,.nav-right a:hover{
+    color:#fff;
+  }
+  .tree{
+    margin: 0 7px;
+    color: #424242;
+  }
+  .tre{
+    float: left;
+    margin: 0;
+    color: #424242;
+  }
+  .nav-right{
+    /*width: 339px;*/
+    float: right;
+  }
+  .topbar-info{
+    line-height: 40px;
+    position: relative;
+    height: 40px;
+  }
+  .user{
+    position: relative;
+    width: 110px;
+    padding: 0;
+    white-space: normal;
+    float: left;
+  }
+  .user a:hover{
+    color: #ff7000;
+    background-color: #fff;
+  }
+  .user-name{
+    float: left;
+    position: relative;
+    z-index: 5;
+    display: block;
+    width: 110px;
+    height: 40px;
+    text-align: center;
+  }
+  .name{
+    display: inline-block;
+    width: auto;
+    max-width: 75px;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: text-bottom;
+  }
+  .tu{
+    font-family: zz;
+    font-size: 12px;
+    line-height: 24px;
+    vertical-align: 9px;
+  }
+  .user-menu{
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 40px;*/
+    /*z-index: 3;*/
+    width: 120px;
+    margin: 0;
+    padding: 7px 0;
+    list-style: none;
+    background: #fff;
+    box-shadow:0 0;
+    /*height: 150px;*/
+    height: 0;
+    overflow: hidden;
+    transition: all .5s;
+  }
+  #user{
+    height: 150px;
+  }
+  .user-menu li{
+    text-align: center;
+    line-height: 30px;
+  }
+  .user-menu li a{
+    height: 30px;
+    display: block;
+    transition: all .2s ;
+    color: #424242;
+  }
+  /*.user-menu li:hover{*/
+  /*background-color: #f5f5f5;*/
+  /*}*/
+  .user-menu li a:hover{
+    color: #ff7000;
+    background-color: #f5f5f5;
+  }
+  .message{
+    padding: 0 10px;
+  }
+  .topbar-info a{
+    padding: 0 5px;
+    text-align: center;
+  }
+  .sapn {
+    font: 400 20px/40px zz;
+  }
+
+  .cart {
+    width: 120px;
+    height: 40px;
+    float: right;
+    text-align: center;
+    position: relative;
+
+  }
+
+  .cart a {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #424242;
+  }
+  .cart:hover #cart_content {
+    height: 100px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #cart_content {
+    width: 316px;
+    height: 0px;
+    line-height: 40px;
+    background-color: #fff;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    /*display: none;*/
+    right: 0;
+    z-index: 1;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  }
+  .cart_contenttop{
+    float: left;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
